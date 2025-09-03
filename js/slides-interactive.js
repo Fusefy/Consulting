@@ -133,8 +133,8 @@ Reveal.addEventListener('ready', function () {
         title: "2. ROI and Heatmap",
         description: "Break down business needs into epics, stories, and tasks with clear priorities and traceability.",
         points: [
-          "Epics → Stories → Tasks Breakdown – Convert business needs into Epics, decompose into User Stories with acceptance criteria.",
-          "Define granular tasks for sprint planning.",
+          "ROI: Measures total model cost vs. business value to quantify economic impact.",
+          "Heatmap: Prioritizes AI use cases by value, feasibility, and strategic fit.",
           "Prioritization & Traceability – Use frameworks like MoSCoW/WSJF to prioritize stories, link them to requirements for end-to-end traceability, and ensure compliance."
         ],
         icon: "fa-solid fa-person-running",
