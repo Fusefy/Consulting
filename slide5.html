@@ -116,7 +116,54 @@
       color: #666;
       margin: 0;
     }
+.platform-card {
+    position: relative; /* Ensure relative positioning for popup */
+    /* ...existing styles... */
+}
 
+.platform-popup {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%) translateY(-18px);
+    width: 200px;
+    background: #232b36;
+    border: 1px solid #333;
+    border-radius: 8%;
+    padding: 6px 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    z-index: 9999; /* High z-index to appear above other cards */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+    color: #fff;
+    font-size: 0.80rem;
+    line-height: 1.1;
+    
+}
+.platform-popup ul {
+    margin: 0;
+    padding-left: 14px;
+}
+.platform-popup li {
+    margin-bottom: 4px;
+}
+.platform-card:hover .platform-popup {
+    opacity: 1;
+    visibility: visible;
+}
+.platform-popup::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #232b36;
+}
 
     /* --- NEW ANIMATION STYLES --- */
     
@@ -260,21 +307,34 @@
   <div class="platform-cards" style="gap: 1.2rem; align-items: center; justify-content: center; flex-wrap: nowrap;">
     
     <!-- Card 1: Green Field -->
-    <div class="platform-card" style="width: 250px; height: 80px; padding: 1rem;">
-        <img src="images/Green Field (New).webp" alt="Green Field Icon" style="width: 40px; height: 40px; margin-right: 1.2rem;">
-        <div>
-            <h3 style="font-size: 1.1rem; font-weight: 700; white-space: normal; margin-bottom: 5px;">Green Field (New)</h3>
-            <p style="font-size: 0.95rem; color: #666; margin: 0; line-height: 1.3;">Supports new application development</p>
-        </div>
+<div class="platform-card" style="width: 250px; height: 80px; padding: 1rem; position: relative;">
+    <img src="images/Green Field (New).webp" alt="Green Field Icon" style="width: 40px; height: 40px; margin-right: 1.2rem;">
+    <div>
+        <h3 style="font-size: 1.1rem; font-weight: 700; white-space: normal; margin-bottom: 5px;">Green Field (New)</h3>
+        <p style="font-size: 0.95rem; color: #666; margin: 0; line-height: 1.3;">Supports new application + Auto-generates </p>
     </div>
+    <div class="platform-popup">
+        <ul>
+            <li>Auto-generates compliant, testable GCP-ready code and pipelines with built-in logging/security.</li>
+            <li>Leverages GCP with built-in governance, compliance, and security for a scalable AI ecosystem.</li>
+        </ul>
+    </div>
+</div>
 
     <!-- Card 2: Brown Field -->
     <div class="platform-card" style="width: 250px; height: 80px; padding: 1rem;">
         <img src="images/Brown.png" alt="Brown Field Icon" style="width: 40px; height: 40px; margin-right: 1.2rem;">
         <div>
             <h3 style="font-size: 1.1rem; font-weight: 700; white-space: normal; margin-bottom: 5px;">Brown Field (Old)</h3>
-            <p style="font-size: 0.95rem; color: #666; margin: 0; line-height: 1.3;">Bring Agentic AI capabilities to existing apps</p>
+            <p style="font-size: 0.95rem; color: #666; margin: 0; line-height: 1.3;">Embed Agentic AI into existing apps + Workflows + Collaboration + Data Sources</p>
         </div>
+        <div class="platform-popup">
+        <ul>
+            <li>Enables multi-process AI workflows.</li>
+            <li>Leverages internal & external data sources.</li>
+            <li>Human + AI-agent collaboration.</li>
+        </ul>
+    </div>
     </div>
 
     <!-- Card 3: Multi-Language -->
@@ -282,8 +342,14 @@
         <img src="images/Lang.png" alt="Multi-Language Icon" style="width: 40px; height: 40px; margin-right: 1.2rem;">
         <div>
             <h3 style="font-size: 1.1rem; font-weight: 700; white-space: normal; margin-bottom: 5px;">Multi-Lang<br>Capabilities</h3>
-            <p style="font-size: 0.95rem; color: #666; margin: 0; line-height: 1.3;">Supports various languages and tools</p>
+            <p style="font-size: 0.95rem; color: #666; margin: 0; line-height: 1.3;">Supports various languages and tools + Architecture + Deployment</p>
         </div>
+        <div class="platform-popup">
+        <ul>
+            <li>AI-driven architecture & workflows with Google AgentSpace, BigQuery, and BI integration.</li>
+            <li>Seamless GCP deployment using IAM, VPC, Cloud Run, GKE with strong governance & compliance.</li>
+        </ul>
+    </div>
     </div>
 
     <!-- Arrow -->

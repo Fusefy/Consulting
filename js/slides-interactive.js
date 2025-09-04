@@ -116,100 +116,148 @@ Reveal.addEventListener('ready', function () {
     const workflowDetailsContainer = document.getElementById('workflow-details');
 
     // Structured data for each step
-    const stepsData = {
-      1: {
-        title: "1. Discovery",
-        description: "Align stakeholders, capture business goals, and validate feasibility against system capabilities.",
-        points: [
-          "Engage with business stakeholders to capture objectives, KPIs, and constraints.",
-          "Ensure technical teams understand business impact.",
-          "Compare requirements against current systems, identify dependencies, risks, and validate feasibility for technical implementation."
-        ],
-        icon: "fa-solid fa-box-archive",
-        theme: "theme-blue",
-        pointIcon: "fa-solid fa-check"
-      },
-      2: {
-        title: "2. ROI and Heatmap",
-        description: "Break down business needs into epics, stories, and tasks with clear priorities and traceability.",
-        points: [
-          "ROI: Measures total model cost vs. business value to quantify economic impact.",
-          "Heatmap: Prioritizes AI use cases by value, feasibility, and strategic fit.",
-          "Prioritization & Traceability – Use frameworks like MoSCoW/WSJF to prioritize stories, link them to requirements for end-to-end traceability, and ensure compliance."
-        ],
-        icon: "fa-solid fa-person-running",
-        theme: "theme-teal",
-        pointIcon: "fa-solid fa-check"
-      },
-      3: {
-        title: "3. Project Plan",
-        description: "Develop clean, modular, and secure code with CI/CD automation for consistency.",
-        points: [
-          "Standards & Best Practices – Write clean, modular code following SOLID principles.",
-          "Apply code reviews, static analysis, and secure coding guidelines.",
-          "Automation & CI/CD Integration – Use automated code scaffolding, testing frameworks, and CI/CD pipelines to ensure consistency and reduce manual overhead."
-        ],
-        icon: "fa-solid fa-code",
-        theme: "theme-purple",
-        pointIcon: "fa-solid fa-check"
-      },
-      4: {
-        title: "4. Project Build",
-        description: "Release applications through scalable, automated pipelines with rollback and progressive deployment strategies.",
-        points: [
-          "Environment Strategy – Deploy code progressively across Dev → QA → UAT → Prod with automated pipelines feature toggles, and rollback mechanisms.",
-          "Deploy using a service like AWS ECS, GCP Cloud Run, or Azure App Service.",
-          "Scalable & Resilient Deployment – Utilize containerization (Docker, Kubernetes), infrastructure as code (Terraform/CloudFormation), and blue-green/canary releases."
-        ],
-        icon: "fa-solid fa-cloud-arrow-up",
-        theme: "theme-orange",
-        pointIcon: "fa-solid fa-check"
-      },
-      5: {
-        title: "5. Audit Suite AI",
-        description: "Ensure end-to-end observability with logs, metrics, alerts, and proactive incident response.",
-        points: [
-          "End-to-End Observability – Implement centralized logging (ELK, CloudWatch, Datadog), metrics (Prometheus, Grafana), and tracing (OpenTelemetry, Jaeger).",
-          "Proactive Incident Response – Set up automated alerts, anomaly detection.",
-          "Dashboards for real-time insights; enable SLO/SLI-based monitoring for reliability."
-        ],
-        icon: "fa-solid fa-circle-check",
-        theme: "theme-green",
-        pointIcon: "fa-solid fa-check"
-      }
-    };
+// ...existing code...
+const stepsData = {
+  1: {
+    title: "1. Discovery",
+    description: "Align stakeholders, capture business goals, and validate feasibility against system capabilities.",
+    points: [
+      "Engage with business stakeholders to capture objectives, KPIs, and constraints.",
+      "Ensure technical teams understand business impact.",
+      "Compare requirements against current systems, identify dependencies, risks, and validate feasibility for technical implementation."
+    ],
+    icon: "fa-solid fa-box-archive",
+    theme: "theme-blue",
+    pointIcon: "fa-solid fa-check",
+    images: [
+      "images/Adoption Insights.png",
+      "images/AI Inventory.png"
+    ]
+  },
+  2: {
+    title: "2. ROI and Heatmap",
+    description: "Break down business needs into epics, stories, and tasks with clear priorities and traceability.",
+    points: [
+      "ROI: Measures total model cost vs. business value to quantify economic impact.",
+      "Heatmap: Prioritizes AI use cases by value, feasibility, and strategic fit.",
+      "Prioritization & Traceability – Use frameworks like MoSCoW/WSJF to prioritize stories, link them to requirements for end-to-end traceability, and ensure compliance."
+    ],
+    icon: "fa-solid fa-person-running",
+    theme: "theme-teal",
+    pointIcon: "fa-solid fa-check",
+    images: [
+      "images/Heatmap.png",
+      "images/ROI-G.png"
+    ]
+  },
+  3: {
+    title: "3. Project Plan",
+    description: "Develop clean, modular, and secure code with CI/CD automation for consistency.",
+    points: [
+      "Standards & Best Practices – Write clean, modular code following SOLID principles.",
+      "Apply code reviews, static analysis, and secure coding guidelines.",
+      "Automation & CI/CD Integration – Use automated code scaffolding, testing frameworks, and CI/CD pipelines to ensure consistency and reduce manual overhead."
+    ],
+    icon: "fa-solid fa-code",
+    theme: "theme-purple",
+    pointIcon: "fa-solid fa-check",
+    images: [
+      "images/ARC-Foundary.png",
+      "images/AI Foundary-2.png"
+    ]
+  },
+  4: {
+    title: "4. Project Build",
+    description: "Release applications through scalable, automated pipelines with rollback and progressive deployment strategies.",
+    points: [
+      "Environment Strategy – Deploy code progressively across Dev → QA → UAT → Prod with automated pipelines feature toggles, and rollback mechanisms.",
+      "Deploy using a service like AWS ECS, GCP Cloud Run, or Azure App Service.",
+      "Scalable & Resilient Deployment – Utilize containerization (Docker, Kubernetes), infrastructure as code (Terraform/CloudFormation), and blue-green/canary releases."
+    ],
+    icon: "fa-solid fa-cloud-arrow-up",
+    theme: "theme-orange",
+    pointIcon: "fa-solid fa-check",
+    images: [
+      "images/AI Foundary-3.png",
+      "images/AI Foundary-3a.png"
+    ]
+  },
+  5: {
+    title: "5. Audit Suite AI",
+    description: "Ensure end-to-end observability with logs, metrics, alerts, and proactive incident response.",
+    points: [
+      "End-to-End Observability – Implement centralized logging (ELK, CloudWatch, Datadog), metrics (Prometheus, Grafana), and tracing (OpenTelemetry, Jaeger).",
+      "Proactive Incident Response – Set up automated alerts, anomaly detection.",
+      "Dashboards for real-time insights; enable SLO/SLI-based monitoring for reliability."
+    ],
+    icon: "fa-solid fa-circle-check",
+    theme: "theme-green",
+    pointIcon: "fa-solid fa-check",
+    images: [
+      "images/validation1.png ",
+      "images/Validation_Modeler.jpg"
+    ]
+  }
+};
 
+// Function to update the right-side content panel dynamically
+function updateContent(step) {
+  const data = stepsData[step];
+  if (!data) return;
+
+  const pointsHtml = data.points
+    .map(point => `
+      <li>
+        <div class="fusefy-list-icon">
+          <i class="${data.pointIcon}"></i>
+        </div>
+        <span>${point}</span>
+      </li>`)
+    .join('');
+
+  // Add two clickable images below the explanation, using step-specific images
+  const imagesHtml = data.images ? `
+    <div style="display: flex; gap: 1.5rem; margin-top: 2rem;">
+      <img 
+        src="${data.images[0]}" 
+        class="clickable-image" 
+        data-src="${data.images[0]}" 
+        alt="${data.title} Image 1" 
+        style="max-width: 220px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor: pointer;"
+      />
+      <img 
+        src="${data.images[1]}" 
+        class="clickable-image" 
+        data-src="${data.images[1]}" 
+        alt="${data.title} Image 2" 
+        style="max-width: 220px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); cursor: pointer;"
+      />
+    </div>
+  ` : '';
+
+  const contentHtml = `
+    <div class="fusefy-content-header">
+      <div class="fusefy-content-icon"><i class="${data.icon}"></i></div>
+      <div class="fusefy-content-title">
+        <h3>${data.title}</h3>
+        <p>${data.description}</p>
+      </div>
+    </div>
+    <div class="fusefy-content-details">
+      <ul>${pointsHtml}</ul>
+    </div>
+    ${imagesHtml}
+  `;
+
+  workflowDetailsContainer.innerHTML = contentHtml;
+  workflowDetailsContainer.className = 'fusefy-content-panel';
+  workflowDetailsContainer.classList.add(data.theme);
+
+  // Ensure zoomable images are initialized after rendering
+  setupZoomableImages();
+}
+// ...existing code...
     // Function to update the right-side content panel dynamically
-    function updateContent(step) {
-      const data = stepsData[step];
-      if (!data) return;
-
-      const pointsHtml = data.points
-        .map(point => `
-                    <li>
-                        <div class="fusefy-list-icon">
-                            <i class="${data.pointIcon}"></i>
-                        </div>
-                        <span>${point}</span>
-                    </li>`)
-        .join('');
-
-      const contentHtml = `
-                <div class="fusefy-content-header">
-                    <div class="fusefy-content-icon"><i class="${data.icon}"></i></div>
-                    <div class="fusefy-content-title">
-                        <h3>${data.title}</h3>
-                        <p>${data.description}</p>
-                    </div>
-                </div>
-                <div class="fusefy-content-details">
-                    <ul>${pointsHtml}</ul>
-                </div>`;
-
-      workflowDetailsContainer.innerHTML = contentHtml;
-      workflowDetailsContainer.className = 'fusefy-content-panel';
-      workflowDetailsContainer.classList.add(data.theme);
-    }
 
     // Handle clicks on navigation items
     function handleNavClick(event) {
@@ -247,7 +295,7 @@ Reveal.addEventListener('ready', function () {
     }
   })();
 
-});
+}); 
 
 //-----------------------completed----------------
 function scrollToElement(targetId, event) {
@@ -306,23 +354,23 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // -------------------Function for slide 6- BATTLE CARD ----------------------
-function resetAnimation(element) {
-  element.style.animation = 'none';
-  // Force reflow
-  void element.offsetWidth;
-  element.style.animation = '';
-}
+// function resetAnimation(element) {
+//   element.style.animation = 'none';
+//   // Force reflow
+//   void element.offsetWidth;
+//   element.style.animation = '';
+// }
 
 // Replay all main block and table row animations
-function replayAnimations() {
-  // Main blocks
-  ['.features-section', '.compare-section', '.comparison-table-container'].forEach(sel => {
-    const el = document.querySelector(sel);
-    if (el) resetAnimation(el);
-  });
-  // Table rows
-  document.querySelectorAll('.comparison-table tbody tr').forEach(row => resetAnimation(row));
-}
+// function replayAnimations() {
+//   // Main blocks
+//   ['.features-section', '.compare-section', '.comparison-table-container'].forEach(sel => {
+//     const el = document.querySelector(sel);
+//     if (el) resetAnimation(el);
+//   });
+//   // Table rows
+//   document.querySelectorAll('.comparison-table tbody tr').forEach(row => resetAnimation(row));
+// }
 
 // Reveal.js event for slide change
 document.addEventListener('DOMContentLoaded', function () {

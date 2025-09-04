@@ -1,5 +1,12 @@
-<section class="index-slide" data-auto-animate>
+<section class="index-slide slide1-bg" data-auto-animate>
   <style>
+   .index-slide.slide1-bg {
+    background-image: url('images/BG2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent; /* Ensure no white background */
+  }
     .index-slide {
       display: flex;
       flex-direction: column;
@@ -118,7 +125,9 @@
       justify-content: space-between;
       align-items: center;
     }
-
+.reveal .slide-background.present {
+  visibility: hidden;
+}
     /* Ensure the company logo is properly sized */
     .company-logo {
       height: 40px;
@@ -183,20 +192,19 @@
     <!-- Logo container for better centering -->
     <div class="fusefy-logo-container fragment" data-fragment-index="0">
       <img
-        style="padding-top: 70px; width: 300px; height: 85px;"
-        src="images/fusefy-slide1.svg"
+        style="padding-top: 130px; width: 300px; height: 120px;"
+        src="images/ImageSlide1.png"
         alt="Fusefy Logo"
         class="fusefy-logo custom-appear"
       />
     </div>
 
     <!-- Paragraph below with fragment index 1 -->
-    <p class="main-heading fragment" data-fragment-index="1">
-     AIaaS - Turning intelligence  to actions
+    <p style="color: wheat;" class="main-heading fragment" data-fragment-index="1">
+     AIaaS - Turning intelligence  to actions 
     </p>
 
     <!-- NEW: Container for the icon and text. The fragment attributes are moved here so they appear together. -->
-    <div class="agentic-container fragment" data-fragment-index="2">
       <!-- <p class="main-heading" style="font-weight: 700; color: #002060; line-height: 1.6 !important;">
         Agentic AI: Turning Intelligence into <br> Action
       </p> -->
