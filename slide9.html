@@ -1,692 +1,462 @@
-<section class="intelligent-agents-slide" data-auto-animate data-transition="zoom">
-  <style>
-    .intelligent-agents-slide {
-      --dark-blue: #0a2540;
-      --light-blue: #3a86ff;
-      --orange: #ff6b35;
-      --text-primary: #1a202c;
-      --text-secondary: #4a5568;
-      --card-border: #e2e8f0;
-      --card-shadow: rgba(0, 0, 0, 0.1);
-      --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
-      --success-green: #10b981;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: white;
-      width: 100%;
-      height: 100%;
-      padding: 4vh 6vw;
-      box-sizing: border-box;
-      position: relative;
-      font-family: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    
-    /* MODIFIED: Storylane modal styles for full screen */
-    .storylane-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #000; /* Background for transition */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-    }
-    
-    .storylane-modal.active {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.3s ease;
-    }
-    
-    .storylane-container {
-      /* MODIFIED FOR FULL SCREEN */
-      width: 100%;
-      height: 100%;
-      max-width: none;
-      aspect-ratio: unset;
-      background-color: white;
-      border-radius: 0;
-      box-shadow: none;
-      position: relative;
-      transform: none;
-      transition: none;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      padding: 0;
-      justify-content: center;
-    }
-    
-    .storylane-modal.active .storylane-container {
-       transform: none;
-    }
-    
-    .close-storylane {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      font-size: 24px;
-      font-weight: bold;
-      color: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      z-index: 100;
-      transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-    
-    .close-storylane:hover {
-      background-color: rgba(0, 0, 0, 0.7);
-      transform: scale(1.1);
-      color: #ff6b35;
-    }
+<section class="index-slide" data-auto-animate>
+    <style>
+        .index-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: white;
+            width: 100vw;
+            height: 100vh;
+            padding: 4vh 6vw;
+            box-sizing: border-box;
+            text-align: center;
+            /* Center all text content */
+        }
 
-    .intelligent-agents-slide * {
-      box-sizing: border-box;
-    }
+        .slide-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Vertical center */
+            align-items: center;
+            /* Horizontal center */
+            padding: 0 20px;
+            margin: auto;
+            /* Center in available space */
+            max-width: 800px;
+            /* Limit width for better readability */
+        }
 
-    .slide-header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-align: center;
-      margin-bottom: 15px;
-      position: relative;
-      z-index: 1;
-    }
+        .main-heading {
+            font-size: 30px;
+            font-weight: bold;
+            color: #0021f3;
+            text-align: center;
+            margin-top: 40px;
+            width: 100%;
+        }
 
-    .subtitle-wrapper {
-        font-size: 20px;
-        color: #0a2540 !important;
-      text-align: center;
-      margin-bottom: 25px;
-      position: relative;
-    }
+        .subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            color: #002060;
+            text-align: center;
+            margin: 0 0 20px 0;
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 10;
+            width: 100%;
+        }
 
-    .company-logo {
-      height: 40px;
-      max-width: 40px;
-      transition: transform 0.3s ease;
-    }
+        .fusefy-logo {
+            max-width: 350px;
+            height: auto;
+            margin: 0 auto 20px;
+            /* Center horizontally with margin and add bottom margin */
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
 
-    .company-logo:hover {
-      transform: scale(1.1);
-    }
+        .fusefy-logo-container {
+            width: 100%;
+            text-align: center;
+            /* Ensure horizontal centering */
+        }
 
-    .slide-content {
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-      position: relative;
-    }
+        .fusefy-logo:hover {
+            transform: scale(1.05);
+        }
 
-    .agent-cards-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 100%;
-      flex: 1;
-      justify-content: center;
-    }
+        /* Fragment animations */
+        .fragment.custom-appear {
+            opacity: 0;
+        }
 
-    .top-row, .bottom-row {
-      display: flex;
-      gap: 50px;
-      justify-content: center;
-    }
+        .fragment.custom-appear.visible {
+            opacity: 1;
+            animation: appearAnimation 1s ease-out forwards;
+        }
 
-    .top-row {
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-    }
+        @keyframes appearAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
 
-    .bottom-row {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+            70% {
+                transform: scale(1.1) rotate(5deg);
+            }
 
-    .agent-card {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      padding: 16px;
-      position: relative;
-      overflow: visible;
-      border: 1px solid var(--card-border);
-      flex: 1;
-      min-width: 200px;
-      max-width: 400px;
-      height: 200px;
-      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      cursor: pointer;
-    }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
 
-    .agent-card:hover {
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      transform: translateY(-5px) scale(1.02);
-      border-color: var(--light-blue);
-    }
+        .fusefy-logo.pulse {
+            animation: pulseAnimation 0.5s ease-in-out;
+        }
 
-    .card-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid #f0f4f8;
-    }
+        @keyframes pulseAnimation {
+            0% {
+                transform: scale(1);
+            }
 
-    .agent-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      margin-right: 12px;
-      background: linear-gradient(135deg, #f0f5fa 0%, #e6eef7 100%);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-      position: relative;
-    }
+            50% {
+                transform: scale(1.1);
+            }
 
-    .agent-icon svg {
-      width: 20px;
-      height: 20px;
-    }
+            100% {
+                transform: scale(1);
+            }
+        }
 
-    .agent-info {
-      flex: 1;
-    }
+        h1.zoom-in {
+            transform: scale(0.5);
+            opacity: 0;
+            transition: all 1.5s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+        }
 
-    .agent-name {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 3px;
-      color: var(--dark-blue);
-      letter-spacing: -0.3px;
-    }
+        section.present h1.zoom-in {
+            transform: scale(1);
+            opacity: 1;
+        }
 
-    .agent-use-case {
-      font-size: 12px;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
+        /* Ensure the header is properly positioned */
+        .slide-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .impact-list {
-      list-style-type: none;
-      margin-top: 10px;
-      padding: 0;
-    }
+        /* Ensure the company logo is properly sized */
+        .company-logo {
+            height: 40px;
+            max-width: 40px;
+            transition: transform 0.3s ease;
+        }
 
-    .impact-item {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: flex-start;
-      font-size: 13px;
-      color: var(--text-primary);
-      font-weight: 500;
-      position: relative;
-      line-height: 1.4;
-      text-align: left;
-      padding-left: 0;
-      list-style-type: none;
-      gap: 8px;
-    }
+        .company-logo:hover {
+            transform: scale(1.1);
+        }
 
-    .impact-icon {
-      width: 18px;
-      height: 18px;
-      margin-right: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: rgba(16, 185, 129, 0.1);
-      position: relative;
-      overflow: visible;
-    }
+        /* Navigation hint */
+        .nav-hint {
+            position: absolute;
+            bottom: 70px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #0021f3;
+            font-size: 16px;
+        }
 
-    .impact-icon svg {
-      width: 10px;
-      height: 10px;
-      fill: var(--success-green);
-      position: relative;
-      z-index: 1;
-    }
+        /* --- NEW STYLES ADDED FOR AGENTIC AI SECTION --- */
+        .agentic-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            /* Creates space between the icon and text */
+            margin-top: 25px;
+        }
 
-    .card-procurement { border-top: 3px solid var(--light-blue); }
-    .card-hr { border-top: 3px solid var(--orange); }
-    .card-recruitment { border-top: 3px solid var(--light-blue); }
-    .card-claims { border-top: 3px solid var(--orange); }
-    .card-customer { border-top: 3px solid var(--light-blue); }
-    .card-healthcare { border-top: 3px solid var(--light-blue); }
+        .agentic-icon {
+            height: 130px;
+            /* Adjust size as needed */
+            width: 130px;
+            flex-shrink: 0;
+            /* Prevents the icon from shrinking */
+        }
 
-    .icon-procurement { background: linear-gradient(135deg, rgba(58, 134, 255, 0.1) 0%, rgba(58, 134, 255, 0.05) 100%); }
-    .icon-procurement svg { fill: var(--light-blue); }
-    .icon-hr { background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 107, 53, 0.05) 100%); }
-    .icon-hr svg { fill: var(--orange); }
-    .icon-recruitment { background: linear-gradient(135deg, rgba(58, 134, 255, 0.1) 0%, rgba(58, 134, 255, 0.05) 100%); }
-    .icon-recruitment svg { fill: var(--light-blue); }
-    .icon-claims { background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 107, 53, 0.05) 100%); }
-    .icon-claims svg { fill: var(--orange); }
-    .icon-customer { background: linear-gradient(135deg, rgba(58, 134, 255, 0.1) 0%, rgba(58, 134, 255, 0.05) 100%); }
-    .icon-customer svg { fill: var(--light-blue); }
-    .icon-healthcare { background: linear-gradient(135deg, rgba(58, 134, 255, 0.1) 0%, rgba(58, 134, 255, 0.05) 100%); }
-    .icon-healthcare svg { fill: var(--light-blue); }
+        /* Override .main-heading styles ONLY within our new container */
+        .agentic-container .main-heading {
+            margin-top: 0;
+            /* Remove the default top margin */
+            text-align: left;
+            /* Align text to the left relative to the icon */
+            width: auto;
+            /* Allow the content to define the width */
+        }
 
-    .fragment { opacity: 0; transition: all 0.5s ease; }
-    .fragment.visible { opacity: 1; }
+        /* --- END OF NEW STYLES --- */
+        /* --- NEW STYLES ADDED FOR AI STRATEGY FLOWCHART SECTION --- */
+        :root {
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+        }
 
-    .agent-card.glow::after {
-      content: '';
-      position: absolute;
-      top: -2px; left: -2px; right: -2px; bottom: -2px;
-      background: linear-gradient(45deg, var(--light-blue), transparent, var(--orange));
-      z-index: -1;
-      border-radius: 14px;
-      opacity: 0.2;
-    }
+        main {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            /* Ensure main background is white */
+        }
 
-    .bg-accent { position: absolute; border-radius: 50%; z-index: -1; filter: blur(50px); opacity: 0.1; }
-    .bg-accent-1 { width: 200px; height: 200px; top: -50px; right: -50px; background: var(--light-blue); }
-    .bg-accent-2 { width: 150px; height: 150px; bottom: -30px; left: -30px; background: var(--orange); }
+        .main-content-container {
+            margin-left: 10%;
+            margin-right: auto;
+            width: 100%;
+            max-width: 100%;
+            /* Increased max-width for the container */
+        }
 
-    .shimmer { position: relative; overflow: visible; }
-    .shimmer::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 100%);
-      opacity: 0;
-    }
-    
-    /* MODIFIED: Standardized styles for the full screen embed */
-    .sl-embed {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .storylane-loading {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #FFF; /* Use a solid background */
-      z-index: 1;
-    }
-    
-    .loading-spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid rgba(58, 134, 255, 0.2);
-      border-top: 4px solid var(--light-blue);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin-bottom: 15px;
-    }
-    
-    .loading-text {
-      color: var(--dark-blue);
-      font-size: 16px;
-      text-align: center;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
-    .agent-card.clickable {
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    
-    .agent-card.clickable:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    .agent-card.clicked {
-      transform: scale(0.96);
-      transition: transform 0.1s ease;
-    }
-    
-    .agent-card::after {
-      content: "Click to view demo";
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background-color: rgba(10, 37, 64, 0.1);
-      color: var(--dark-blue);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .agent-card:hover::after {
-      opacity: 0.7;
-    }
+        .strategy-flow-grid {
+            display: grid;
+            grid-template-columns: max-content auto 1fr;
+            align-items: center;
+            column-gap: 1rem;
+            row-gap: 1rem;
+            margin-bottom: 7%;
+        }
 
-    @media (max-width: 768px) {
-      /* MODIFIED: Removed specific overrides for modal as it's now always full screen */
-    }
-  </style>
+        .flow-icon-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            text-align: center;
+        }
 
-  <header class="slide-header" data-id="header">
-    <h1 class="zoom-in" data-auto-animate data-auto-animate-duration="1.5">
-      AGENTIC AI USE CASES
-    </h1>
-    <img
-      src="./images/Logo.png"
-      alt="Company Logo"
-      class="company-logo"
-      data-auto-animate
-      data-auto-animate-duration="1"
-    />
-  </header>
+        .flow-icon {
+            height: 3rem;
+            /* h-12 */
+            width: 3rem;
+            /* w-12 */
+            color: var(--color-gray-800);
+        }
 
-  <div class="slide-content">
-    <div class="subtitle-wrapper">
-      <h2>
-        Intelligent Agents Built for Business Operations
-      </h2>
+        .flow-title {
+            width: 7rem;
+            /* Reduced width for titles to make them smaller */
+            font-size: 0.875rem;
+            /* text-sm */
+            font-weight: 600;
+            /* font-semibold */
+            color: var(--color-gray-900);
+            line-height: 1.25;
+            /* leading-tight */
+        }
+
+        .flow-connector-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .flow-connector-line {
+            height: 1px;
+            width: 3rem;
+            /* w-12 */
+            background-color: #000000;
+        }
+
+        .flow-details-box {
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            border: 1px solid #000000;
+            background-color: #ffffff;
+            padding: 1rem;
+            /* p-4 */
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            /* shadow-sm */
+            width: calc(100% - 2rem);
+            /* Adjusted width to make boxes wider, considering padding */
+            max-width: 700px;
+            /* Max width for individual boxes */
+        }
+
+        .flow-points-list {
+            list-style-position: inside;
+            list-style-type: disc;
+            padding-left: 0;
+            margin: 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+            /* text-sm */
+            color: var(--color-gray-800);
+        }
+
+        .flow-points-list li:not(:first-child) {
+            margin-top: 0.5rem;
+            /* space-y-2 */
+        }
+
+        .flow-arrow {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            font-weight: 600;
+        }
+        /* Animation for flow items */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.strategy-flow-grid .flow-icon-wrapper,
+.strategy-flow-grid .flow-connector-wrapper,
+.strategy-flow-grid .flow-details-box {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.strategy-flow-grid .flow-icon-wrapper { animation-delay: 0.1s; }
+.strategy-flow-grid .flow-connector-wrapper { animation-delay: 0.2s; }
+.strategy-flow-grid .flow-details-box { animation-delay: 0.3s; }
+
+/* Stagger for each row */
+.strategy-flow-grid > div:nth-child(3n+1) { animation-delay: 0.1s; }
+.strategy-flow-grid > div:nth-child(3n+2) { animation-delay: 0.2s; }
+.strategy-flow-grid > div:nth-child(3n+3) { animation-delay: 0.3s; }
+        /* --- END OF NEW STYLES --- */
+    </style>
+    <header class="slide-header" data-id="header">
+        <h1 class="zoom-in" data-auto-animate data-auto-animate-duration="1.5"> Demo: Enterprise AI integration with GCP
+        </h1>
+        <img src="images/Logo.png" alt="Company Logo" class="company-logo" data-auto-animate data-auto-animate-duration="1" />
+    </header>
+    <!-- Integrated AI Strategy Flowchart Content Starts Here -->
+    <main>
+        <div class="main-content-container">
+            <div class="strategy-flow-grid">
+                <!-- Item 1 -->
+                <div class="flow-icon-wrapper">
+                    <svg class="flow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.9-4.33 2.5 2.5 0 0 1 .15-4.94 2.5 2.5 0 0 1 2.76-4.52 2.5 2.5 0 0 1 2.45-2.14z">
+                        </path>
+                        <path
+                            d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.9-4.33 2.5 2.5 0 0 0-.15-4.94 2.5 2.5 0 0 0-2.76-4.52 2.5 2.5 0 0 0-2.45-2.14z">
+                        </path>
+                        <path d="M12 18a2.5 2.5 0 0 0-2.5-2.5"></path>
+                        <path d="M12 18a2.5 2.5 0 0 1 2.5-2.5"></path>
+                        <path d="M12 13a2.5 2.5 0 0 0-2.5-2.5"></path>
+                        <path d="M12 13a2.5 2.5 0 0 1 2.5-2.5"></path>
+                        <path d="M12 8a2.5 2.5 0 0 0-2.5-2.5"></path>
+                        <path d="M12 8a2.5 2.5 0 0 1 2.5-2.5"></path>
+                    </svg>
+                    <h2 class="flow-title">Fusefy AI</h2>
+                </div>
+                <div class="flow-connector-wrapper">
+                    <div class="flow-connector-line"></div>
+                </div>
+                <div class="flow-details-box">
+                    <ul class="flow-points-list">
+                        <li>Enables multi-process AI workflows ,Leverages internal & external data sources</li>
+                        <li>Human + AI-agent collaboration</li>
+                    </ul>
+                </div>
+                <!-- Item 2 -->
+                <div class="flow-icon-wrapper">
+                    <svg class="flow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M20.94 11c-.04-.69-.1-1.39-.1-2.09C20.84 4.58 16.96 1 12 1S3.16 4.58 3.16 9c0 .7.06 1.4.1 2.09">
+                        </path>
+                        <path d="M20.94 11h-8.94v2.5h5.18c-.22 1.08-.83 2.24-2.01 3.06"></path>
+                        <path d="M3.26 13c.1-.69.16-1.39.16-2.09 0-.7-.06-1.4-.16-2.09"></path>
+                        <path
+                            d="M12 23c4.96 0 8.84-3.58 8.84-8h-2.5c0 2.98-2.22 5.5-5.34 5.5s-5.34-2.52-5.34-5.5H3.16c0 4.42 3.88 8 8.84 8z">
+                        </path>
+                    </svg>
+                    <h2 class="flow-title">Strategic AI Delivery</h2>
+                </div>
+                <div class="flow-connector-wrapper">
+                    <div class="flow-connector-line"></div>
+                </div>
+                <div class="flow-details-box">
+                    <ul class="flow-points-list">
+                        <li>AI-driven architecture & workflows with Google AgentSpace, BigQuery, and BI integration.</li>
+                        <li>Seamless GCP deployment using IAM, VPC, Cloud Run, GKE with strong governance & compliance.</li>
+                    </ul>
+                </div>
+                <!-- Item 3 -->
+                <div class="flow-icon-wrapper">
+                    <img class="flow-icon" 
+                    src="images/fusefy.svg" 
+                    alt="Google Cloud Icon" 
+                    style="height: 3rem; width: 3rem;" />
+                    <h2 class="flow-title">GCP Implementation</h2>
+                </div>
+                <div class="flow-connector-wrapper">
+                    <div class="flow-connector-line"></div>
+                </div>
+                <div class="flow-details-box">
+                    <ul class="flow-points-list">
+                        <li>Auto-generates compliant, testable GCP-ready code and pipelines with built-in logging/security.
+                        </li>
+                        <li>Leverages GCP with built-in governance, compliance, and security for a scalable AI ecosystem
+                        </li>
+                    </ul>
+                </div>
+                <!-- Item 4 but removed -->
+                <!-- <div class="flow-icon-wrapper">
+                    <svg class="flow-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        <path d="M12 20h4"></path>
+                        <path d="M8 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4"></path>
+                        <path d="M10 12h.01"></path>
+                        <path d="M10 16h.01"></path>
+                        <path d="M6 8h.01"></path>
+                        <path d="M6 12h.01"></path>
+                    </svg>
+                    <h2 class="flow-title">Enterprise Deployment</h2>
+                </div>
+                <div class="flow-connector-wrapper">
+                    <div class="flow-connector-line"></div>
+                </div>
+                <div class="flow-details-box">
+                    <ul class="flow-points-list">
+                        <li>Deploys via GCP using IAM, VPC, Cloud Run, or GKE.</li>
+                        <li>Enforces governance and compliance, enabling seamless integration across GCP.</li>
+                    </ul>
+                </div> -->
+                <!-- Item 4  // (5 but changed into 4) // -->
+                <!-- <div class="flow-icon-wrapper">
+                   <img class="flow-icon" 
+                    src="images/BigQuery.png" 
+                    alt="BigQuery" 
+                    style="height: 3rem; width: 3rem;" />
+                    <h2 class="flow-title">BigQuery Foundation</h2>
+                </div>
+                <div class="flow-connector-wrapper">
+                    <div class="flow-connector-line"></div>
+                </div>
+                <div class="flow-details-box">
+                    <ul class="flow-points-list">
+                        <li>Serves as central enterprise data warehouse.</li>
+                        <li>Enables AI/ML pipeline integration, predictive insights, and real-time analytics at scale.
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </main>
+    <!-- Integrated AI Strategy Flowchart Content Ends Here -->
+    <div class="slide-body">
+        <!-- Logo container for better centering -->
+        <div class="fusefy-logo-container fragment" data-fragment-index="0">
+            <img style="padding-top: 70px; width: 300px; height: 85px;" src="images/fusefy.svg" alt="Fusefy Logo"
+                class="fusefy-logo custom-appear" />
+        </div>
     </div>
-
-    <div class="agent-cards-container">
-      <!-- Top row with 3 cards -->
-      <div class="top-row">
-        <!-- Healthcare Agent -->
-        <div class="agent-card card-healthcare" data-storylane-url="https://app.storylane.io/share/ppzafgb2wm0i">
-          <div class="card-header">
-            <div class="agent-icon icon-healthcare">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M18 14h-4v4h-4v-4H6v-4h4V6h4v4h4m1-9H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/>
-              </svg>
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">Healthcare Agent</div>
-              <div class="agent-use-case">Medical Document Processing</div>
-            </div>
-          </div>
-          <ul class="impact-list">
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>65% faster documentation</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>90% accuracy in records</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>4x patient data processing</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Onboarding Agent -->
-        <div class="agent-card card-hr" data-storylane-url="https://app.storylane.io/share/d9xx3md7cyhg">
-          <div class="card-header">
-            <div class="agent-icon icon-hr">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6M14,14H6V12H14M18,8H6V6H18"/>
-              </svg>
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">Onboarding Agent</div>
-              <div class="agent-use-case">Employee Onboarding Assistant</div>
-            </div>
-          </div>
-          <ul class="impact-list">
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>70% faster onboarding</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>45% reduced HR support</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>2x faster query resolution</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Interview Agent -->
-        <div class="agent-card card-recruitment" data-storylane-url="https://app.storylane.io/share/daptmkw6awmo">
-          <div class="card-header">
-            <div class="agent-icon icon-recruitment">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M14,20V19C14,17.67 11.33,17 10,17C8.67,17 6,17.67 6,19V20H14M10,12A2,2 0 0,0 8,14A2,2 0 0,0 10,16A2,2 0 0,0 12,14A2,2 0 0,0 10,12Z"/>
-              </svg>
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">Interview Agent</div>
-              <div class="agent-use-case">Recruitment Assistance</div>
-            </div>
-          </div>
-          <ul class="impact-list">
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>50% faster screening</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>85% auto-scheduling</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>3x recruiter productivity</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Bottom row with 2 cards -->
-      <div class="bottom-row">
-        <!-- Claim Reimbursement Agent -->
-        <div class="agent-card card-claims" data-storylane-url="https://app.storylane.io/share/dhhssqjljjan">
-          <div class="card-header">
-            <div class="agent-icon icon-claims">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,10.5A1.5,1.5 0 0,0 10.5,12A1.5,1.5 0 0,0 12,13.5A1.5,1.5 0 0,0 13.5,12A1.5,1.5 0 0,0 12,10.5M7.5,12A4.5,4.5 0 0,1 12,7.5A4.5,4.5 0 0,1 16.5,12H15A3,3 0 0,0 12,9A3,3 0 0,0 9,12H7.5Z"/>
-              </svg>
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">Claim Reimbursement Agent</div>
-              <div class="agent-use-case">Claims Automation</div>
-            </div>
-          </div>
-          <ul class="impact-list">
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>40% faster processing</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>30% less manual review</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>Improved audit quality</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- PO Agent -->
-        <div class="agent-card card-procurement" data-storylane-url="https://app.storylane.io/share/1qaq6ksdkphn">
-          <div class="card-header">
-            <div class="agent-icon icon-procurement">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M10,19L11.5,17.5L9.5,15.5L11.5,13.5L10,12L7,15L10,18V19Z"/>
-              </svg>
-            </div>
-            <div class="agent-info">
-              <div class="agent-name">Purchase Order Agent</div>
-              <div class="agent-use-case">PO Processing Automation</div>
-            </div>
-          </div>
-          <ul class="impact-list">
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>60% less manual effort</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>95% data accuracy</span>
-            </li>
-            <li class="impact-item">
-              <div class="impact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z" />
-                </svg>
-              </div>
-              <span>3x cycle time speed-up</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Storylane modals for each agent -->
-    <div id="storylane-modal-interview" class="storylane-modal">
-      <div class="storylane-container">
-        <div class="close-storylane">×</div>
-        <div class="sl-embed">
-          <div class="storylane-loading">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Loading Claim Reimbursement Demo...</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div id="storylane-modal-claim" class="storylane-modal">
-      <div class="storylane-container">
-        <div class="close-storylane">×</div>
-        <div class="sl-embed">
-          <div class="storylane-loading">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Loading Interview Agent Demo...</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div id="storylane-modal-po" class="storylane-modal">
-      <div class="storylane-container">
-        <div class="close-storylane">×</div>
-        <div class="sl-embed">
-          <div class="storylane-loading">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Loading onboarding agent demo...</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div id="storylane-modal-onboarding" class="storylane-modal">
-      <div class="storylane-container">
-        <div class="close-storylane">×</div>
-        <div class="sl-embed">
-          <div class="storylane-loading">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Loading Interview Agent Demo...</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="storylane-modal-healthcare" class="storylane-modal">
-      <div class="storylane-container">
-        <div class="close-storylane">×</div>
-        <div class="sl-embed">
-          <div class="storylane-loading">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Loading Healthcare Agent Demo...</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
