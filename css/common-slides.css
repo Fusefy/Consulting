@@ -64,7 +64,7 @@
   font-weight: 800 !important;
   margin: 12px 0; /* Reduced margins */
   position: relative;
-  z-index: 10; /* Ensure it's above other elements but below header */
+ /* z-index: 10; Ensure it's above other elements but below header */
   visibility: visible !important; /* Force visibility */
   opacity: 1 !important; /* Ensure opacity is set to visible */
   text-align: center;
