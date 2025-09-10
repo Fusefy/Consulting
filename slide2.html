@@ -1,356 +1,203 @@
-<section class="index-slide-fusefy slide2-bg" data-auto-animate>
+<section class="index-slide slide2-bg" data-auto-animate>
   <style>
-    .index-slide-fusefy.slide2-bg {
-    position: relative;
-    background-image: url('images/BG-Blue-Slide2.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    min-height: 100vh;
-    }
-
-    .tagline-fusefy {
-      position: absolute;
-      top: 70px;
-      left: 5%;
-      transform: translateX(-50%);
+    /* Background Styling */
+    .index-slide.slide2-bg {
+      position: relative;
+      background-image: url('images/BG-Blue-Slide2.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      min-height: 100vh;
+      padding: 60px 40px;
       text-align: center;
-      font-size: 29px;
-      font-weight: bold;
-      color: #f9f9f9;
-      line-height: 1.4;
-      width: 90%;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .tagline-fusefy span {
-      color: #f3f4f6;
+    /* Main Title */
+    .car-main-heading {
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
     }
 
-    .subtext-fusefy {
-      position: absolute;
-      top: 195px;
-      left: 15%;
-      transform: translateX(-50%);
-      text-align: center;
-      font-size: 17px;
-      color: wheat;
-      line-height: 1.6;
-      width: 80%;
-      max-width: 900px;
+    .car-main-heading .car-highlight {
+      color: #00c2ff; /* Sky blue for Fusefy */
     }
 
-    /* Timeline */
-    .timeline-fusefy {
-      position: absolute;
-      top: 280px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 55%;
-      height: 2px;
-      background: #dcdfe6;
+    /* Sub Title */
+    .car-sub-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #c2caed;
+      margin-bottom: 30px;
     }
 
-    .timeline-fusefy .circle-fusefy {
-      position: absolute;
-      top: -10px;
-      width: 20px;
-      height: 20px;
-      background: #fff;
-      border: 2px solid #dcdfe6;
-      border-radius: 50%;
-    }
-
-    .timeline-fusefy .circle-fusefy:nth-child(1) {
-      left: 0%;
-      border-color: #f97316;
-    }
-
-    .timeline-fusefy .circle-fusefy:nth-child(2) {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .timeline-fusefy .circle-fusefy:nth-child(3) {
-      right: 0%;
-      border-color: #2563eb;
-    }
-
-    /* Step buttons */
-    .steps-fusefy {
-      position: absolute;
-      top: 270px;
-      left: 50%;
-      transform: translateX(-50%);
+    /* Features Container */
+    .car-features {
       display: flex;
-      justify-content: center;
-      gap: 16px;
-      width: 80%;
-      max-width: 1000px;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 850px;
+      margin: 0 auto;
     }
 
-    .step-fusefy {
-      flex: 0 1 300px;
-      text-align: center;
-      padding: 14px 18px;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .step-fusefy.orange {
-      background: #f97316;
-      color: #fff;
-    }
-
-    .step-fusefy.white {
-      background: #fff;
-      border: 1px solid #ddd;
-      color: #000;
-    }
-
-    .step-fusefy.blue {
-      background: #2563eb;
-      color: #fff;
-    }
-
-    /* --- NEW SMALL FEATURES SECTION --- */
-    .stats-fusefy {
-      position: absolute;
-      top: 420px;
-      left: 50%;
-      transform: translateX(-50%);
+    /* Feature Card */
+    .car-feature-card {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      width: 80%;
-      max-width: 1000px;
-      margin-top: 20px;
-    }
-
-    .stat-card {
-      background: #f8fbfd;
-      border-radius: 10px;
-      padding: 14px 22px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      min-width: 200px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #1b1b1b;
-    }
-
-    .stat-card .icon {
-      color: #2196f3;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    /* --- UPDATED FEATURE SECTION (TWO BIG BOXES) --- */
-    .features-fusefy {
-      position: absolute;
-      top: 370px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      gap: 5%;
-      width: 70%;
-      max-width: 920px;
-    }
-
-    .feature-fusefy {
-      flex: 0 1 400px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 20px;
-      height: auto;
+      align-items: flex-start;
+      gap: 18px;
       text-align: left;
-      border: 1px solid #eee;
     }
 
-    .feature-fusefy.old-way {
-      background-color: rgba(30, 41, 59, 0.3);
-      border: 1px solid #7247f3;
+    /* Icon Container */
+    .car-feature-icon {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background-color: rgba(0, 194, 255, 0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .feature-fusefy.new-way {
-      background-color: rgba(30, 41, 59, 0.3);
-      border: 1px solid #7247f3;
+    .car-feature-icon svg {
+      width: 28px;
+      height: 28px;
+      color: #00c2ff;
     }
 
-    .feature-fusefy h3 {
-      margin: 0 0 12px;
+    /* Feature Text */
+    .car-feature-text {
+      color: #e1e7f0;
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    /* ---------------- NEW SERVICE BOXES ---------------- */
+    .car-services-container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .car-service-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 0px 25px;
+      width: 280px;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .car-service-box:hover {
+      background-color: rgba(0, 194, 255, 0.08);
+      transform: translateY(-5px);
+    }
+
+    /* Service Box Icon */
+    .car-service-box img {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 12px;
+    }
+
+    .car-service-box h3 {
+      color: #ffffff;
       font-size: 18px;
       font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    .feature-fusefy.old-way h3 {
-      color: #d32f2f;
+    .car-service-box p {
+      color: #c3c9e5;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 5px;
     }
-
-    .feature-fusefy.new-way h3 {
-      color: wheat;
-    }
-
-    .feature-fusefy ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .feature-fusefy ul li {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-      font-size: 15px;
-      color: #ffffff;
-    }
-
-    .feature-fusefy.old-way ul li::before {
-      content: "✘";
-      color: #d32f2f;
-      font-weight: bold;
-    }
-
-    .feature-fusefy.new-way ul li::before {
-      content: "✔";
-      color: #1b5e20;
-      font-weight: bold;
-    }
-
-    /* --- NEW ANIMATION STYLES --- */
-    @keyframes fadeInScale {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    
-    @keyframes growFromCenter {
-      from {
-        transform: translateX(-50%) scaleX(0);
-      }
-      to {
-        transform: translateX(-50%) scaleX(1);
-      }
-    }
-
-    .tagline-fusefy,
-    .subtext-fusefy,
-    .timeline-fusefy,
-    .timeline-fusefy .circle-fusefy,
-    .step-fusefy,
-    .stat-card,
-    .feature-fusefy {
-      opacity: 0;
-    }
-
-    .tagline-fusefy {
-      animation: fadeInScale 0.8s ease-out forwards;
-      animation-delay: 1.6s;
-    }
-
-    .subtext-fusefy {
-      animation: fadeInScale 0.8s ease-out forwards;
-      animation-delay: 1.9s;
-    }
-
-    .timeline-fusefy {
-      animation: growFromCenter 0.7s ease-out forwards;
-      animation-delay: 2.3s;
-    }
-
-    .timeline-fusefy .circle-fusefy {
-      animation: fadeInScale 0.5s ease-out forwards;
-    }
-    .timeline-fusefy .circle-fusefy:nth-child(1) { animation-delay: 2.7s; }
-    .timeline-fusefy .circle-fusefy:nth-child(2) { animation-delay: 2.8s; }
-    .timeline-fusefy .circle-fusefy:nth-child(3) { animation-delay: 2.9s; }
-
-    .step-fusefy {
-      animation: fadeInScale 0.6s ease-out forwards;
-    }
-    .steps-fusefy .step-fusefy:nth-child(1) { animation-delay: 3.2s; }
-    .steps-fusefy .step-fusefy:nth-child(2) { animation-delay: 3.4s; }
-    .steps-fusefy .step-fusefy:nth-child(3) { animation-delay: 3.6s; }
-
-    .stat-card {
-      animation: fadeInScale 0.6s ease-out forwards;
-    }
-    .stats-fusefy .stat-card:nth-child(1) { animation-delay: 3.8s; }
-    .stats-fusefy .stat-card:nth-child(2) { animation-delay: 4.0s; }
-    .stats-fusefy .stat-card:nth-child(3) { animation-delay: 4.2s; }
-    .stats-fusefy .stat-card:nth-child(4) { animation-delay: 4.4s; }
-
-    .feature-fusefy {
-      animation: fadeInScale 0.6s ease-out forwards;
-    }
-    .features-fusefy .feature-fusefy:nth-child(1) { animation-delay: 4.7s; }
-    .features-fusefy .feature-fusefy:nth-child(2) { animation-delay: 4.9s; }
   </style>
 
   <header class="slide-header" data-id="header">
-    <h1 class="zoom-in" data-auto-animate data-auto-animate-duration="1.5">What is Fusefy ?</h1>
-    <img src="images/Logo.png" alt="Company Logo" class="company-logo" data-auto-animate
-      data-auto-animate-duration="1" />
+    <h1 class="zoom-in" data-auto-animate data-auto-animate-duration="1.5">Fusefy AI Adoption Consulting and services</h1>
+    <img src="images/Logo.png" alt="Company Logo" class="car-logo" data-auto-animate data-auto-animate-duration="1" />
   </header>
 
-  <!-- Main tagline -->
-  <div class="tagline-fusefy">
-    Launch Agentic AI solutions in <span>Days, Not Months, On Your </span><br />
-    Platforms with <span>AI Adoption As Service <br> (AIaaS)</span>
-  </div>
+  <p class="car-main-heading">
+    <span class="car-highlight">Fusefy</span>.ai: From Backlog to Breakthrough
+  </p>
+  <p class="car-sub-title">
+    AI Adoption As A Services
+  </p>
 
-  <!-- Sub paragraph -->
-  <div class="subtext-fusefy">
-    Turn your ideas into secure, explainable AI agents and workflows inside Jira—no new tools,
-    just faster go-to-market with the platforms you already trust.
-  </div>
-
-
-  <!-- Step buttons -->
-  <div class="steps-fusefy">
-    <div class="step-fusefy orange">16 +Hours </div>
-    <div class="step-fusefy white">2+ Weeks</div>
-    <div class="step-fusefy blue">1+ month production launch</div>
-  </div>
-
-
-  <!-- Updated Feature Cards -->
-  <div class="features-fusefy">
-    <div class="feature-fusefy old-way">
-      <h3>AI modernization</h3>
-      <ul>
-        <li>Ditch rigid, expensive RPA tools and  subscriptions.</li>
-        <li>Stop siloed, manual workflows.</li>
-        <li>Uplift your OCR engines AI with latest GenAI models.</li>
-        <li>End vendor lock-in forever.</li>
-        <!-- <li>Custom connectors, scripts, and APIs</li> -->
-      </ul>
+  <!-- Features Section -->
+  <div class="car-features">
+    <!-- Feature 1 -->
+    <div class="car-feature-card">
+      <div class="car-feature-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6h1.5m-1.5 3h1.5m-1.5 3h1.5M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+        </svg>
+      </div>
+      <p class="car-feature-text">
+       <span style="font-weight: 600;color: #04c4ff; ">Accelerate Your Launch :</span> We transform your backlog into tangible, revenue-generating AI applications.
+      </p>
     </div>
 
-    <div class="feature-fusefy new-way">
-      <h3>Agentic AI Workflows</h3>
-      <ul>
-        <li>Goal-oriented AI automation</li>
-        <li>Custom LLMs to Private → LLMs Proprietary data fuels your AI.</li>
-        <li>Your AI, your workflows</li>
-        <li>Your workflows adapt instantly</li>
-        <li>Total control of your workflows.</li>
-      </ul>
+    <!-- Feature 2 -->
+    <div class="car-feature-card">
+      <div class="car-feature-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+        </svg>
+      </div>
+      <p class="car-feature-text">
+       <span style="font-weight: 600;color: #04c4ff; "> Seamless Integration :</span>Fusefy.ai operates as a true extension of your in-house teams and ecosystem collaborators.
+      </p>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="car-feature-card">
+      <div class="car-feature-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m4.5-4.5v6.375c0 6.15-3.58 11.25-8.375 11.25s-8.375-5.1-8.375-11.25V8.25l8.375-3.75 8.375 3.75Z" />
+        </svg>
+      </div>
+      <p class="car-feature-text">
+       <span style="font-weight: 600;color: #04c4ff; "> End-to-End Expertise :</span>We deliver on capability, capacity, and speed by specializing in data infrastructure, analytics, and intelligent process automation.
+      </p>
+    </div>
+  </div>
+
+  <!-- Service Boxes -->
+  <div class="car-services-container">
+    <div class="car-service-box">
+      <img src="images/Slide2-1.png" alt="AI Strategy Icon">
+      <h3 style="color: #00c2ff; font-style:italic;">AI Strategy and Planning</h3>
+      <p style="font-weight: 900;">- AI use case inventory and ATTC&S & ROI analysis.</p>
+      <p style="font-weight: 900;">- AI architecture creation.</p>  
+      <p style="font-weight: 900;">- Roadmap.</p>      
+    </div>
+
+    <div class="car-service-box">
+      <img src="images/Slide2-2.png" alt="AI Build Icon">
+      <h3 style="color: #00c2ff; font-style:italic;">AI Build and Development</h3>
+      <p style="font-weight: 900;">- AI development and build.</p>
+      <p style="font-weight: 900;">- AI experimentation and monitoring.</p>
+      <p style="font-weight: 900;">- AI deployment.</p>
+    </div>
+
+    <div class="car-service-box">
+      <img src="images/Slide2-3.png" alt="AI Security Icon">
+      <h3 style="color: #00c2ff; font-style:italic;">AI Security, Governance, and Risk</h3>
+      <p style="font-weight: 900;">- AI governance and compliance.</p>
+      <p style="font-weight: 900;">- Risk management.</p>
+      <p style="font-weight: 900;">- AI cyber risk management.</p>      
     </div>
   </div>
 </section>

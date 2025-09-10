@@ -1,317 +1,203 @@
-<section class="index-slide" data-auto-animate>
+<section class="index-slide slide3-bg" data-auto-animate>
   <style>
-    /* General Section Font */
-    .ai-adoption-section {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
-
-    /* Main Wrapper */
-    .ai-adoption-wrapper {
-      background: linear-gradient(to right, #f0f6ff 30%, #ffffff 70%);
+    /* Background Styling */
+    .index-slide.slide3-bg {
+      position: relative;
+      background-image: url('images/slide3New.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      min-height: 100vh;
       padding: 60px 40px;
-      margin-top: 40px;
+      font-family: 'Poppins', sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      box-sizing: border-box;
-      text-align: left;
-      overflow: hidden;
     }
 
-    .ai-adoption-container {
+    /* Intro Text */
+    .stakeholder-intro {
+      margin: 32px auto 40px auto;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #9d9da3;
+      text-align: center;
+      letter-spacing: 0.01em;
+      width: 100%;
+    }
+
+    /* Main Content Wrapper (Two Column Layout) */
+    .stakeholder-container {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      max-width: 1100px;
+      align-items: flex-start;
+      gap: 40px;
       width: 100%;
-      gap: 60px;
+      max-width: 1200px;
     }
 
-    /* LEFT - Intro Section */
-    .intro-text {
+    /* Left Column: Stakeholder Wrapper */
+    .stakeholder-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      max-width: 700px;
+      text-align: left;
       flex: 1;
-      max-width: 400px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeSlideUp 1.2s ease-out forwards;
-      animation-delay: 0.3s;
+      margin-left: 30px;
     }
 
-    .blue-line {
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(to right, #0052ff, #a2c1ff);
-      margin-bottom: 20px;
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: growLine 1s ease-out forwards;
-      animation-delay: 0.2s;
+    /* Stakeholder Block */
+    .stakeholder-block {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
     }
 
-    .intro-text h2 {
-      font-size: 36px;
+    /* Stakeholder Icon */
+    .stakeholder-icon {
+      width: 65px;
+      height: 65px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 194, 255, 0.3);
+      box-shadow: 0px 4px 12px rgba(0, 194, 255, 0.25);
+    }
+
+    /* Stakeholder Details */
+    .stakeholder-details {
+      flex: 1;
+    }
+
+    /* Stakeholder Title */
+    .stakeholder-title {
+      font-size: 20px;
       font-weight: 700;
-      color: #1c2e4a;
-      line-height: 1.3;
-      margin: 0 0 20px 0;
+      color: #ffffff;
+      margin-bottom: 4px;
     }
 
-    .intro-text p {
-      font-size: 16px;
-      color: #5a677d;
-      line-height: 1.6;
-    }
-
-    .no-hype {
-      color: #0052ff;
+    /* Stakeholder Sub Title */
+    .stakeholder-subtitle {
+      font-size: 14px;
+      color: #00c2ff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
       font-weight: 600;
     }
 
-    /* RIGHT - Steps Flow */
-    .steps-flow {
-      flex: 1.2;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      opacity: 0;
-      transform: translateX(40px);
-      animation: fadeSlideLeft 1s ease-out forwards;
-    }
-
-    /* Step Animations (delay each step) */
-    .step-item:nth-child(1) { animation-delay: 0.6s; }
-    .step-item:nth-child(3) { animation-delay: 1.2s; }
-    .step-item:nth-child(5) { animation-delay: 1.8s; }
-
-    .step-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transform: scale(0.5);
-      opacity: 0;
-      animation: popIn 0.8s ease-out forwards;
-    }
-
-    .step-item:nth-child(1) .step-icon { animation-delay: 0.7s; }
-    .step-item:nth-child(3) .step-icon { animation-delay: 1.3s; }
-    .step-item:nth-child(5) .step-icon { animation-delay: 1.9s; }
-
-    .icon-ideation { background-color: #0052ff; }
-    .icon-foundry { background-color: #192b69; }
-    .icon-audit { background-color: #f7a600; }
-
-    .step-content h3 {
-      font-size: 28px;
-      font-weight: 700;
-      margin: 0 0 8px 0;
-    }
-
-    .title-ideation { color: #0052ff; }
-    .title-foundry { color: #192b69; }
-    .title-audit { color: #f7a600; }
-
-    .step-content p {
-      font-size: 16px;
-      color: #5a677d;
-      line-height: 1.6;
+    /* Bullet List */
+    .stakeholder-list {
+      list-style: none;
+      padding: 0;
       margin: 0;
     }
 
-    /* Arrows with bounce effect */
-    .arrow {
-      height: 40px;
-      width: 64px;
+    .stakeholder-list li {
+      font-size: 14px;
+      color: #c3c9e5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    /* Check Icon */
+    .stakeholder-list li::before {
+      content: "✔";
+      color: #00c2ff;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* Right Column: Image */
+    .stakeholder-image {
+      flex: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
-      margin: 8px 0;
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards, bounce 1.5s infinite ease-in-out;
+      align-items: flex-start;
     }
 
-    .arrow:nth-of-type(1) { animation-delay: 1s, 2s; }
-    .arrow:nth-of-type(2) { animation-delay: 1.6s, 2.6s; }
-
-    /* Animations */
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeSlideLeft {
-      from { opacity: 0; transform: translateX(40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes popIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes growLine {
-      from { transform: scaleX(0); }
-      to { transform: scaleX(1); }
-    }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-      .ai-adoption-wrapper { padding: 40px 20px; }
-      .ai-adoption-container { flex-direction: column; text-align: center; }
-      .intro-text { margin-bottom: 50px; max-width: 100%; }
-      .blue-line { margin-left: auto; margin-right: auto; }
-      .steps-flow { align-items: center; }
-      .step-item { flex-direction: column; text-align: center; align-items: center; gap: 15px; }
+    .stakeholder-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
     }
   </style>
 
-  <header class="slide-header" data-id="header" style="display: flex; align-items: center; justify-content: space-between;">
-  <h1 class="zoom-in" data-auto-animate data-auto-animate-duration="1.5" style="margin: 0;">
-    3 Steps to AI Success
-  </h1>
-  <div style="display: flex; align-items: center;">
-    <!-- Slide 7 Navigation Button - now BEFORE the logo -->
-    <a href="javascript:void(0);"
-       onclick="if(typeof Reveal !== 'undefined') { Reveal.slide(6); } else { window.location.href='index.html#/6'; }"
-       style="display: inline-block; margin-right: 12px; vertical-align: middle;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#1a73e8" style="cursor: pointer;">
-        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
-      </svg>
-    </a>
-    <img
-      src="images/Logo.png"
-      alt="Company Logo"
-      class="company-logo"
-      data-auto-animate
-      data-auto-animate-duration="1"
-      style="vertical-align: middle;"
-    />
-  </div>
-</header>
+  <header class="slide-header" data-id="header">
+    <h1 class="zoom-in" data-auto-animate data-auto-animate-duration="1.5">PARTNERING WITH LEADERS</h1>
+    <img src="images/Logo.png" alt="Company Logo" class="company-logo" data-auto-animate
+      data-auto-animate-duration="1" />
+  </header>
 
-  <!-- Animated AI Adoption Section -->
-  <div class="ai-adoption-wrapper">
-    <div class="ai-adoption-container">
-      <!-- Intro -->
-      <div class="intro-text">
-        <div class="blue-line"></div>
-        <h2>3 Steps for Rapid<br>Enterprise AI Adoption<br>with ROI</h2>
-        <p>A pragmatic, <span class="no-hype">no-hype</span> approach to help enterprises adopt AI efficiently and at scale.</p>
+  <p class="stakeholder-intro">
+    Tailored AI Solutions for Key Stakeholders
+  </p>
+
+  <!-- Two Column Layout -->
+  <div class="stakeholder-container">
+
+    <!-- Left Column: Stakeholder Details -->
+    <div class="stakeholder-wrapper">
+
+      <!-- CFO -->
+      <div class="stakeholder-block">
+        <img src="images/CFO-Slide3.jpg" alt="CFO" class="stakeholder-icon" />
+        <div class="stakeholder-details">
+          <p class="stakeholder-title">CFO: Strategic Value & ROI</p>
+          <ul class="stakeholder-list">
+            <li>Quantifiable Business Cases & TCO Analysis</li>
+            <li>Budget Planning & Investment Prioritization</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Steps -->
-      <div class="steps-flow">
-        <!-- Step 1 -->
-        <div class="step-item">
-          <div class="step-icon icon-ideation">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path
-                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 
-                  2 0 0 1 0 2.83 2 2 0 0 
-                  1-2.83 0l-.06-.06a1.65 1.65 
-                  0 0 0-1.82-.33 1.65 1.65 0 
-                  0 0-1 1.51V21a2 2 0 0 
-                  1-2 2 2 2 0 0 1-2-2v-.09A1.65 
-                  1.65 0 0 0 9 19.4a1.65 1.65 
-                  0 0 0-1.82.33l-.06.06a2 2 0 
-                  0 1-2.83 0 2 2 0 0 1 
-                  0-2.83l.06-.06a1.65 1.65 0 
-                  0 0 .33-1.82 1.65 1.65 0 
-                  0 0-1.51-1H3a2 2 0 0 
-                  1-2-2 2 2 0 0 1 2-2h.09A1.65 
-                  1.65 0 0 0 4.6 9a1.65 1.65 
-                  0 0 0-.33-1.82l-.06-.06a2 
-                  2 0 0 1 0-2.83 2 2 0 0 
-                  1 2.83 0l.06.06a1.65 1.65 
-                  0 0 0 1.82.33H9a1.65 1.65 
-                  0 0 0 1-1.51V3a2 2 0 0 
-                  1 2-2 2 2 0 0 1 2 
-                  2v.09a1.65 1.65 0 0 
-                  0 1 1.51 1.65 1.65 0 0 
-                  0 1.82-.33l.06-.06a2 
-                  2 0 0 1 2.83 0 2 2 0 0 
-                  1 0 2.83l-.06.06a1.65 
-                  1.65 0 0 0-.33 1.82V9a1.65 
-                  1.65 0 0 0 1.51 1H21a2 
-                  2 0 0 1 2 2 2 2 0 0 
-                  1-2 2h-.09a1.65 1.65 0 
-                  0 0-1.51 1z">
-              </path>
-            </svg>
-          </div>
-          <div class="step-content">
-            <h3 class="title-ideation">Fusefy AI Ideation Studio</h3>
-            <p>Seamlessly engage with business and identify high ROI use cases and build roadmap.</p>
-          </div>
+      <!-- CIO -->
+      <div class="stakeholder-block">
+        <img src="images/CIO2.png" alt="CIO" class="stakeholder-icon" />
+        <div class="stakeholder-details">
+          <p class="stakeholder-title">CIO / CISO: Secure & Scalable AI Foundations</p>
+          <ul class="stakeholder-list">
+            <li>Robust AI Architecture & Integration Strategies</li>
+            <li>Comprehensive Data Security & Cyber Risk Management</li>
+          </ul>
         </div>
+      </div>
 
-        <!-- Arrow -->
-        <div class="arrow">
-          <svg width="18" height="30" viewBox="0 0 18 30" fill="#e0e0e0">
-            <path d="M8 0H10V20H15L9 29L3 20H8V0Z" />
-          </svg>
+      <!-- CISO -->
+      <div class="stakeholder-block">
+        <img src="images/CISO1.jpg" alt="CISO" class="stakeholder-icon" />
+        <div class="stakeholder-details">
+          <p class="stakeholder-title">CTO / Engineering: Advanced AI Development & Innovation</p>
+          <ul class="stakeholder-list">
+            <li>Cutting-Edge AI Solution Design & Implementation</li>
+            <li>Accelerating R&D and Proof-of-Concept to Production</li>
+          </ul>
         </div>
+      </div>
 
-        <!-- Step 2 -->
-        <div class="step-item">
-          <div class="step-icon icon-foundry">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              <path
-                d="M12 15.5a3.5 3.5 0 0 0 3.5-3.5c0-1.93-1.57-3.5-3.5-3.5a3.5 3.5 0 
-                0 0-2.47 1.03">
-              </path>
-            </svg>
-          </div>
-          <div class="step-content">
-            <h3 class="title-foundry">Fusefy AI Foundry</h3>
-            <p>Build your ideas in any AI platform of your choice rapidly with state of art low-code models.</p>
-          </div>
-        </div>
-
-        <!-- Arrow -->
-        <div class="arrow">
-          <svg width="18" height="30" viewBox="0 0 18 30" fill="#e0e0e0">
-            <path d="M8 0H10V20H15L9 29L3 20H8V0Z" />
-          </svg>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="step-item">
-          <div class="step-icon icon-audit">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-          </div>
-          <div class="step-content">
-            <h3 class="title-audit">Fusefy AI Audit Suite</h3>
-            <p>Continuously measure model performance, security and safety features to comply with regulatory and security standards.</p>
-          </div>
+      <!-- CAIO / CTO -->
+      <div class="stakeholder-block">
+        <img src="images/CAIO-CTO.png" alt="CAIO / CTO" class="stakeholder-icon" />
+        <div class="stakeholder-details">
+          <p class="stakeholder-title">Legal, Risk and Compliance: Responsible AI Governance</p>
+          <ul class="stakeholder-list">
+            <li>Establishing Ethical AI Frameworks & Policies</li>
+            <li>Navigating Regulatory Requirements & Standards</li>
+          </ul>
         </div>
       </div>
     </div>
+
+    <!-- Right Column: Architecture Image -->
+    <div class="stakeholder-image">
+      <img src="images/Archi-slide3.png" alt="Architecture" />
+    </div>
+
   </div>
 </section>

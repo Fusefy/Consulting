@@ -35,7 +35,79 @@ function setupBIDashboardImagePopup() {
     };
   }
 }
+function setupZoomableImages() {
+  // Remove any existing event listeners
+  document.querySelectorAll('.clickable-image').forEach(img => {
+    img.removeAttribute('onclick');
+  });
 
+  // Add event delegation for clickable images
+  document.addEventListener('click', function (event) {
+    // Check if the clicked element has the clickable-image class
+    if (event.target.classList.contains('clickable-image')) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const imgSrc = event.target.getAttribute('data-src') || event.target.src;
+      showZoom(imgSrc);
+      return false;
+    }
+
+    // Handle zoom overlay close button
+    if (event.target.closest('.close-zoom')) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeZoom();
+      return false;
+    }
+  }, true);
+
+  // Keyboard event for closing zoom overlay
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      const zoomOverlay = document.querySelector('.zoom-overlay.active');
+      if (zoomOverlay) {
+        closeZoom();
+        event.preventDefault();
+      }
+    }
+  });
+}
+
+function showZoom(imgSrc) {
+  let overlay = document.getElementById('zoomOverlay');
+
+  // If the overlay doesn't exist, create it
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'zoomOverlay';
+    overlay.className = 'zoom-overlay';
+    overlay.innerHTML = `
+      <div class="close-zoom">×</div>
+      <img class="zoom-image" id="zoomedImage" src="" alt="Zoomed Image" />
+    `;
+    document.body.appendChild(overlay);
+  }
+
+  const zoomedImg = document.getElementById('zoomedImage');
+  zoomedImg.src = imgSrc;
+  overlay.classList.add('active');
+
+  if (typeof Reveal !== 'undefined') {
+    Reveal.configure({ keyboard: false });
+  }
+}
+
+function closeZoom() {
+  const overlay = document.getElementById('zoomOverlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+  }
+
+  if (typeof Reveal !== 'undefined') {
+    Reveal.configure({ keyboard: true });
+  }
+}
 // Run on initial load
 document.addEventListener('DOMContentLoaded', setupBIDashboardImagePopup);
 
