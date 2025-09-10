@@ -26,212 +26,140 @@
     }
 
     .slide4-intro {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #fff;
       text-align: center;
       letter-spacing: 0.01em;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
-    .slide4-content-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 60px;
-      width: 100%;
-      max-width: 1300px;
-    }
-
-    .slide4-left-column {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      flex: 1;
-      max-width: 700px;
-    }
-
-    .lifecycle-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      position: relative;
-    }
-
-    .lifecycle-icon-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      width: 50px;
-      flex-shrink: 0;
-    }
-
-    .lifecycle-icon-wrapper::after {
-      content: '';
-      position: absolute;
-      top: 56px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: calc(100% - 56px);
-      background-color: #3a4a5a;
-      z-index: 0;
-    }
-
-    .lifecycle-icon-wrapper:last-child::after {
-      display: none;
-    }
-
-    .lifecycle-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background-color: #1a1f2e;
-      padding: 10px;
-      z-index: 1;
-    }
-
-    .stage-block {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 18px 24px;
-      border-radius: 12px;
-      color: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      text-align: left;
-      width: 100%;
-    }
-
-    .stage-block h3 {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: wheat;
-      text-transform: none;
-    }
-
-    .stage-block p {
-      margin: 0;
-      font-size: 1rem;
-      color: #d0d0d0;
-    }
-
+    /* Risk Matrix image wrapper */
     .slide4-right-image {
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 20px;
+      margin-top: -40px;
     }
 
     .slide4-right-image img {
-      width: 220px;
-      height: 100px;
-      margin-bottom: 10px;
-      border-radius: 10px;
-      border: 1px solid #444;
-      margin-top: 150px;
+      width: 750px;  /* Bigger size */
+      max-width: 90vw;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      border: 2px solid #444;
+      cursor: zoom-in;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
     }
 
     .slide4-right-image span {
       color: #ccc;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      margin-top: 8px;
     }
 
-    @media (max-width: 900px) {
-      .slide4-content-wrapper {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .slide4-right-image {
-        margin-top: 40px;
-      }
-    }
+    /* Zoom Overlay */
     .zoom-overlay {
-  display: none !important;
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(10,20,40,0.95);
-  align-items: center;
-  justify-content: center;
-}
-.zoom-overlay.active {
-  display: flex !important;
-}
+      display: none !important;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(10,20,40,0.95);
+      align-items: center;
+      justify-content: center;
+    }
+    .zoom-overlay.active {
+      display: flex !important;
+    }
+     /* Risk Matrix Section */
+  .risk-matrix-container {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 10px;
+    margin-top: 20px;
+    max-width: 1200px;
+    width: 100%;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+    margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  }
+
+  .risk-matrix-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .risk-matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+  }
+
+  .risk-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px 20px;
+    color: #e1e7f0;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .risk-box:hover {
+    background: rgba(0, 194, 255, 0.08);
+    transform: translateY(-4px);
+  }
   </style>
 
   <header class="slide-header" data-id="header">
     <h1 class="zoom-in" data-auto-animate data-auto-animate-duration="1.5">
-      AI LIFECYCLE STAGES & TRUSTWORTHY AI RISK MATRIX
+      FUSEFY TRUSTWORTHY AI FRAMEWORK
     </h1>
     <img src="images/Logo.png" alt="Company Logo" class="company-logo" data-auto-animate data-auto-animate-duration="1" />
   </header>
 
-  <p class="slide4-intro">AI Lifecycle Stages</p>
+  <!-- Updated Section Title -->
+  <p class="slide4-intro">View Risk Matrix</p>
 
-  <div class="slide4-content-wrapper" data-id="lifecycle-wrapper">
-
-    <!-- Left side: Icons + Blocks -->
-    <div class="slide4-left-column">
-      <div class="lifecycle-row">
-        <div class="lifecycle-icon-wrapper">
-          <img src="images/Dataslide4.png" alt="Icon 1" class="lifecycle-icon" />
-        </div>
-        <div class="stage-block">
-          <h3>Level 0 - AI readiness</h3>
-          <p>Gathering, cleaning, and organizing data to build a robust foundation for AI models.</p>
-        </div>
-      </div>
-
-      <div class="lifecycle-row">
-        <div class="lifecycle-icon-wrapper">
-          <img src="images/Slide4icon.jpg" alt="Icon 2" class="lifecycle-icon" />
-        </div>
-        <div class="stage-block">
-          <h3>Level 1 - AI Plots</h3>
-          <p>Developing and rigorously testing models to ensure accuracy, performance, and reliability.</p>
-        </div>
-      </div>
-
-      <div class="lifecycle-row">
-        <div class="lifecycle-icon-wrapper">
-          <img src="images/Slidde.png" alt="Icon 3" class="lifecycle-icon" />
-        </div>
-        <div class="stage-block">
-          <h3>Level 2 - AI Integration</h3>
-          <p>Integrating models into production systems and continuously tracking their real-world performance.</p>
-        </div>
-      </div>
-
-      <div class="lifecycle-row">
-        <div class="lifecycle-icon-wrapper">
-          <img src="images/Sldie4-Last.png" alt="Icon 4" class="lifecycle-icon" />
-        </div>
-        <div class="stage-block">
-          <h3>Level 3 - AI Optimization</h3>
-          <p>Iteratively improving models with new data and techniques to adapt to changing environments.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right side: Risk Matrix image -->
-    <div class="slide4-right-image">
-  <img
-    src="images/RiskMatrix-Slide4.png"
-    data-src="images/RiskMatrix-Slide4.png"
-    alt="Risk Matrix"
-    class="clickable-image"
-    style="width: 220px; height: 100px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #444; margin-top: 150px; cursor: zoom-in;"
-  />
-  <span>View Risk Matrix</span>
+  <!-- Risk Matrix Image -->
+  <div class="slide4-right-image">
+    <img
+      src="images/RiskMatrix-Slide4.png"
+      data-src="images/RiskMatrix-Slide4.png"
+      alt="Risk Matrix"
+      class="clickable-image"
+    />
+  </div>
+  <!-- View Risk Matrix Grid -->
+<div class="risk-matrix-container">
+  <p class="risk-matrix-title">Compliance framework We support</p>
+  <div class="risk-matrix-grid">
+    <div class="risk-box">EU AI Act</div>
+    <div class="risk-box">CHAI</div>
+    <div class="risk-box">OWASP LLM</div>
+    <div class="risk-box">China Generative AI Services Law</div>
+    <div class="risk-box">NIST AI RMF</div>
+    <div class="risk-box">UK AI Framework</div>
+    <div class="risk-box">US AI Bill of Rights</div>
+    <div class="risk-box">UK AI Framework</div>
+    <div class="risk-box">US Executive Order on AI</div>
+    <div class="risk-box">ISO/IEC 23894</div>
+    <div class="risk-box">Cyber Risk</div>
+    <div class="risk-box">Model Validation</div>
+  </div>
 </div>
-<!-- Zoom Overlay for clickable images -->
-<div id="zoomOverlay" class="zoom-overlay" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100vw; height:100vh; background:rgba(10,20,40,0.95); align-items:center; justify-content:center;">
-  <span id="zoomClose" class="close-zoom" style="position:absolute;top:30px;right:40px;font-size:2.5rem;color:#fff;cursor:pointer;z-index:10001;">&times;</span>
-  <img id="zoomedImage" class="zoom-image" src="" alt="Zoomed" style="max-width:90vw;max-height:85vh;box-shadow:0 8px 40px #000;border-radius:16px;"/>
-</div>
+
+  <!-- Zoom Overlay -->
+  <div id="zoomOverlay" class="zoom-overlay">
+    <span id="zoomClose" class="close-zoom" style="position:absolute;top:30px;right:40px;font-size:2.5rem;color:#fff;cursor:pointer;z-index:10001;">&times;</span>
+    <img id="zoomedImage" class="zoom-image" src="" alt="Zoomed" style="max-width:90vw;max-height:85vh;box-shadow:0 8px 40px #000;border-radius:16px;"/>
   </div>
 </section>
