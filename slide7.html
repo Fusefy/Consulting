@@ -18,11 +18,12 @@
     }
 
     .Dio-intro-center-wrapper {
+      flex: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      margin-bottom: 2px;
+      margin-bottom: -17px;
     }
 
     .Dio-intro {
@@ -35,209 +36,187 @@
       margin: 0;
     }
 
-    /* Existing AI Cards */
+    /* Card Grid */
     .Dio-cards-wrapper {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: -25px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
       width: 100%;
-      max-width: 1100px;
+      max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
-      justify-items: center;
     }
 
     .Dio-info-card {
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 12px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 10px;
       text-align: left;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 100%;
-      max-width: 250px;
     }
 
     .Dio-info-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
     }
 
-    .Dio-info-card img {
-      width: 35px;
-      height: 35px;
-      margin-bottom: 10px;
+    /* Icon + Title */
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: -15px;
     }
 
-    .Dio-info-card h3 {
-      font-size: 0.9rem;
+    .card-header img {
+      width: 40px;
+      height: 40px;
+      margin-right: 12px;
+    }
+
+    .card-header h3 {
+      font-size: 1rem;
       font-weight: 700;
       color: #00e0ff;
-      margin-bottom: 6px;
+      margin: 0;
       text-transform: uppercase;
     }
 
     .Dio-info-card p {
-      font-size: 0.8rem;
-      line-height: 1.4;
+      font-size: 0.9rem;
+      line-height: 1.5;
       color: #cfd6e1;
+      margin-bottom: 12px;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 12px 0;
+    }
+
+    /* Team Members */
+    .team-members-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #a0aaba;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .team-members {
+      list-style: none;
+      padding: 0;
       margin: 0;
     }
 
-    /* Expert Team Section */
-    .expert-team-section {
-      margin-top: 5px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .expert-team-section h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0px;
-    }
-
-    .expert-team-wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-      justify-items: center;
-    }
-
-    .expert-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 12px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      max-width: 180px;
-      width: 100%;
-    }
-
-    .expert-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-    }
-
-    .expert-card h4 {
+    .team-members li {
       font-size: 0.9rem;
-      font-weight: 700;
       color: #fff;
       margin-bottom: 4px;
-    }
-
-    .expert-card p {
-      font-size: 0.8rem;
-      color: #00e0ff;
-      margin: 0;
     }
   </style>
 
   <header class="slide-header" data-id="header">
     <h1 class="zoom-in" data-auto-animate data-auto-animate-duration="1.5">
-      OUR KEY CLIENTS
+      Meet Our Expert Team
     </h1>
-    <img src="images/Logo.png" alt="Company Logo" class="company-logo" data-auto-animate data-auto-animate-duration="1" />
+    <img src="images/Logo.png" alt="Company Logo" class="company-logo" data-auto-animate
+      data-auto-animate-duration="1" />
   </header>
 
-  <div class="Dio-intro-center-wrapper">
-    <p class="Dio-intro">
-      Our Outcome of AI adoption
-    </p>
-  </div>
-
-  <!-- Existing AI Cards -->
+  <!-- Updated Cards Section -->
   <div class="Dio-cards-wrapper">
     <div class="Dio-info-card">
-      <img src="images/Slide7-1.png" alt="AI Strategists Icon" />
-      <h3>AI STRATEGISTS</h3>
-      <p>Align AI initiatives with business goals and market trends.</p>
-    </div>
-
-    <div class="Dio-info-card">
-      <img src="images/Slide7-2.png" alt="AI Architects Icon" />
-      <h3>AI ARCHITECTS</h3>
+      <div class="card-header">
+        <img src="images/Slide7-1.png" alt="AI Strategists Icon" />
+        <h3>AI ARCHITECTS</h3>
+      </div>
       <p>Design scalable, robust, and secure AI infrastructures.</p>
+      <div class="divider"></div>
+      <div class="team-members-title">Team Members</div>
+      <ul class="team-members">
+        <li>Mr .Siva</li>
+        <li>Mrs .Sindhiya</li>
+        <li>Mr .Ramesh</li>
+      </ul>
     </div>
 
     <div class="Dio-info-card">
-      <img src="images/Slide7-3.png" alt="AI UX Designers Icon" />
-      <h3>AI USER EXPERIENCE DESIGNERS</h3>
+      <div class="card-header">
+        <img src="images/Slide7-2.png" alt="AI Architects Icon" />
+        <h3>Front-end Developers</h3>
+      </div>
       <p>Create intuitive and accessible AI interfaces.</p>
+      <div class="divider"></div>
+      <div class="team-members-title">Team Members</div>
+      <ul class="team-members">
+        <li>Mr .Jerome Fenetic</li>
+        <li>Mr .Prathap</li>
+        <li>Mr .Sandhanaraj Navin </li>
+      </ul>
     </div>
 
     <div class="Dio-info-card">
-      <img src="images/Slide7-4.png" alt="AI Developers Icon" />
-      <h3>AI DEVELOPERS & DATA SCIENTISTS</h3>
+      <div class="card-header">
+        <img src="images/Slide7-3.png" alt="AI UX Designers Icon" />
+        <h3>Back-End Developers</h3>
+      </div>
+      <p>Create intuitive and accessible AI interfaces.</p>
+      <div class="divider"></div>
+      <div class="team-members-title">Team Members</div>
+      <ul class="team-members">
+        <li>Mr .Lakshmi Narayanan</li>
+        <li>Mr .Barath</li>
+        <li>Mr .Siva</li>
+      </ul>
+    </div>
+
+    <div class="Dio-info-card">
+      <div class="card-header">
+        <img src="images/Slide7-4.png" alt="AI Developers Icon" />
+        <h3>AI DEVELOPERS & DATA SCIENTISTS</h3>
+      </div>
       <p>Build, train, and deploy cutting-edge AI models.</p>
+      <div class="divider"></div>
+      <div class="team-members-title">Team Members</div>
+      <ul class="team-members">
+        <li>Mr .Vignesh Kumar </li>
+        <li>Mr .Surya</li>
+        <li>Mis .Sowmiya</li>
+        <li>Mr .Akash</li>
+      </ul>
     </div>
 
     <div class="Dio-info-card">
-      <img src="images/Slide7-5.png" alt="AI Compliance Icon" />
-      <h3>AI COMPLIANCE AUDITORS</h3>
+      <div class="card-header">
+        <img src="images/Slide7-5.png" alt="AI Compliance Icon" />
+        <h3>AI TEST ENGINEERS</h3>
+      </div>
       <p>Ensure AI systems adhere to ethical guidelines and regulations.</p>
+      <div class="divider"></div>
+      <div class="team-members-title">Team Members</div>
+      <ul class="team-members">
+        <li>Mr .Dinesh</li>
+        <li>Mis .Parvathavardhini</li>
+      </ul>
     </div>
 
     <div class="Dio-info-card">
-      <img src="images/Slide7-7.png" alt="AI Economists Icon" />
-      <h3>AI ECONOMISTS</h3>
+      <div class="card-header">
+        <img src="images/Slide7-7.png" alt="AI Economists Icon" />
+        <h3>AI BUSINESS ANALYSTS</h3>
+      </div>
       <p>Analyze the economic impact and ROI of AI implementation.</p>
-    </div>
-  </div>
-
-  <!-- New Expert Team Section -->
-  <div class="expert-team-section">
-    <p style="font-size: 1.2rem; color: wheat">Meet Our Expert Team</p>
-    <div class="expert-team-wrapper">
-      <div class="expert-card">
-        <h4>Akash</h4>
-        <p>Python Developer</p>
-      </div>
-      <div class="expert-card">
-        <h4>Barath</h4>
-        <p>Frontend Developer</p>
-      </div>
-      <div class="expert-card">
-        <h4>Surya</h4>
-        <p>Data Scientist</p>
-      </div>
-      <div class="expert-card">
-        <h4>Dinesh</h4>
-        <p>Tisting</p>
-      </div>
-      <div class="expert-card">
-        <h4>Prathap</h4>
-        <p>Frontend Developer</p>
-      </div>
-      <div class="expert-card">
-        <h4>Sandanaraj Navin</h4>
-        <p>Fontend Developer</p>
-      </div>
-      <div class="expert-card">
-        <h4>Lakshmi Narayanan</h4>
-        <p>Backend Developer</p>
-      </div>
-      <div class="expert-card">
-        <h4>Vignesh Kumar</h4>
-        <p>Data Scientist</p>
-      </div>
-      <div class="expert-card">
-        <h4>Sowmiya</h4>
-        <p>Full-stack Developer</p>
-      </div>
-      <div class="expert-card">
-        <h4>Parvathavardhini</h4>
-        <p>Frontend Developer</p>
-      </div>
+      <div class="divider"></div>
+      <div class="team-members-title">Team Members</div>
+      <ul class="team-members">
+        <li>Mr .Akash</li>
+        <li>Mis .Parvathavardhini</li>
+      </ul>
     </div>
   </div>
 </section>
